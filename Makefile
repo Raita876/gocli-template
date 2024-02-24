@@ -2,7 +2,7 @@ VERSION := $(shell cat ./VERSION)
 CLI_NAME := hello
 
 .PHONY: build
-build: 
+build:
 	go build \
 		-o ./bin/$(CLI_NAME) \
 		-ldflags "-X main.version=$(VERSION) -X main.name=$(CLI_NAME)" \
@@ -13,8 +13,12 @@ run: build
 	./bin/$(CLI_NAME)
 
 .PHONY: help
-help:
+help: build
 	./bin/$(CLI_NAME) --help
+
+.PHONY: version
+version: build
+	./bin/$(CLI_NAME) -V
 
 .PHONY: test
 test:
