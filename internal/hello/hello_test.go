@@ -7,24 +7,30 @@ import (
 )
 
 func TestHello(t *testing.T) {
-	if err := Hello(); err != nil {
-		t.Error(err)
-	}
-}
-
-func TestGetHelloMessage(t *testing.T) {
 	tests := []struct {
-		want string
+		target string
 	}{
-		{"Hello World!"},
+		{"world"},
 	}
 
 	for _, tt := range tests {
-		got, err := getHelloMessage()
-		if err != nil {
-			t.Error(err)
-		}
+		err := Hello(tt.target)
+		assert.Nil(t, err, "Hello failed.")
+	}
 
-		assert.Equal(t, got, tt.want, "they should be equal")
+}
+
+func TestMakeHelloMessage(t *testing.T) {
+	tests := []struct {
+		target string
+		want   string
+	}{
+		{"world", "Hello World!"},
+	}
+
+	for _, tt := range tests {
+		got, err := makeHelloMessage(tt.target)
+		assert.Nil(t, err, "makeHelloMessage failed.")
+		assert.Equal(t, got, tt.want, "they should be equal.")
 	}
 }

@@ -3,9 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/urfave/cli/v2"
-
 	"github.com/Raita876/hello/internal/hello"
+	"github.com/urfave/cli/v2"
 )
 
 var (
@@ -60,7 +59,7 @@ func (options *Options) Set(opts ...Option) {
 	}
 }
 
-func Hello(c *cli.Context) error {
+func Run(c *cli.Context) error {
 	a := &Arguments{}
 	o := &Options{}
 	a.Set(
@@ -71,7 +70,11 @@ func Hello(c *cli.Context) error {
 		exclNumOption(c.Uint64("exclnum")),
 	)
 
-	return hello.Hello()
+	return run(a, o)
+}
+
+func run(a *Arguments, o *Options) error {
+	return hello.Hello(a.Message)
 }
 
 func main() {
@@ -99,7 +102,7 @@ func main() {
 				Usage:   "Output detailed log.",
 			},
 		},
-		Action: Hello,
+		Action: Run,
 	}
 
 	err := app.Run(os.Args)

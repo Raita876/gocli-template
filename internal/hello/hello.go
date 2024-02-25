@@ -2,8 +2,8 @@ package hello
 
 import "fmt"
 
-func Hello() error {
-	s, err := getHelloMessage()
+func Hello(target string) error {
+	s, err := makeHelloMessage(target)
 	if err != nil {
 		return err
 	}
@@ -13,6 +13,6 @@ func Hello() error {
 	return nil
 }
 
-func getHelloMessage() (string, error) {
-	return "Hello World!", nil
+func makeHelloMessage(target string) (string, error) {
+	return fmt.Sprintf("Hello %s\n", target), nil
 }
