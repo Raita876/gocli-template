@@ -10,7 +10,7 @@ func TestHello(t *testing.T) {
 	tests := []struct {
 		target string
 	}{
-		{"world"},
+		{"World"},
 	}
 
 	for _, tt := range tests {
@@ -25,7 +25,7 @@ func TestMakeHelloMessage(t *testing.T) {
 		target string
 		want   string
 	}{
-		{"world", "Hello World!"},
+		{"World", "Hello World!"},
 	}
 
 	for _, tt := range tests {

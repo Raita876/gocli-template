@@ -14,5 +14,5 @@ func Hello(target string) error {
 }
 
 func makeHelloMessage(target string) (string, error) {
-	return fmt.Sprintf("Hello %s\n", target), nil
+	return fmt.Sprintf("Hello %s!", target), nil
 }
