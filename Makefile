@@ -10,7 +10,7 @@ build:
 
 .PHONY: run
 run: build
-	./bin/$(CLI_NAME) "world"
+	./bin/$(CLI_NAME) "World"
 
 .PHONY: help
 help: build
