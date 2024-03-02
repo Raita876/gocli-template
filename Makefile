@@ -29,13 +29,13 @@ cover: test
 	go tool cover -html=index.out -o index.html
 	python3 -m http.server 8765
 
-.PHONY: deadcode
-deadcode:
-	deadcode ./...
+.PHONY: golangci
+golangci:
+	golangci-lint run -v ./...
 
 .PHONY: govulncheck
 govulncheck:
 	govulncheck ./...
 
 .PHONY: ci
-ci: test deadcode govulncheck
+ci: test golangci govulncheck
