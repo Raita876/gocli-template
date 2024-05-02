@@ -9,5 +9,5 @@ This repository is a template for Go CLI development. The directory structure is
 
 # Tool
 
-- [deadcode](https://pkg.go.dev/golang.org/x/tools/internal/cmd/deadcode)
+- [golangci-lint](https://golangci-lint.run)
 - [govulncheck](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
