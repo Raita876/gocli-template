@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log/slog"
 	"os"
 
 	"github.com/Raita876/hello/internal/hello"
@@ -59,6 +60,18 @@ func (options *Options) Set(opts ...Option) {
 	}
 }
 
+func setDefaulltLogger(debugFlag bool) {
+	level := new(slog.LevelVar)
+	if debugFlag {
+		level.Set(slog.LevelDebug)
+	} else {
+		level.Set(slog.LevelInfo)
+	}
+
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: level}))
+	slog.SetDefault(logger)
+}
+
 func Run(c *cli.Context) error {
 	a := &Arguments{}
 	o := &Options{}
@@ -74,6 +87,7 @@ func Run(c *cli.Context) error {
 }
 
 func run(a *Arguments, o *Options) error {
+	setDefaulltLogger(o.Verbose)
 	return hello.Hello(a.Message, o.ExclNum)
 }
 

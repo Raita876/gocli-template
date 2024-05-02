@@ -10,7 +10,7 @@ build:
 
 .PHONY: run
 run: build
-	./bin/$(CLI_NAME) --exclnum 10 "World"
+	./bin/$(CLI_NAME) --verbose --exclnum 10 "World"
 
 .PHONY: help
 help: build
