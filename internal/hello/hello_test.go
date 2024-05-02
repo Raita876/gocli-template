@@ -8,13 +8,14 @@ import (
 
 func TestHello(t *testing.T) {
 	tests := []struct {
-		target string
+		target  string
+		exclNum uint8
 	}{
-		{"World"},
+		{"World", 1},
 	}
 
 	for _, tt := range tests {
-		err := Hello(tt.target)
+		err := Hello(tt.target, tt.exclNum)
 		assert.Nil(t, err, "Hello failed.")
 	}
 
@@ -22,14 +23,15 @@ func TestHello(t *testing.T) {
 
 func TestMakeHelloMessage(t *testing.T) {
 	tests := []struct {
-		target string
-		want   string
+		target  string
+		exclNum uint8
+		want    string
 	}{
-		{"World", "Hello World!"},
+		{"World", 3, "Hello World!!!"},
 	}
 
 	for _, tt := range tests {
-		got, err := makeHelloMessage(tt.target)
+		got, err := makeHelloMessage(tt.target, tt.exclNum)
 		assert.Nil(t, err, "makeHelloMessage failed.")
 		assert.Equal(t, got, tt.want, "they should be equal.")
 	}

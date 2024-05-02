@@ -74,7 +74,7 @@ func Run(c *cli.Context) error {
 }
 
 func run(a *Arguments, o *Options) error {
-	return hello.Hello(a.Message)
+	return hello.Hello(a.Message, o.ExclNum)
 }
 
 func main() {

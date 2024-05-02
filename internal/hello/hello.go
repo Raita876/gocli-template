@@ -1,9 +1,12 @@
 package hello
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func Hello(target string) error {
-	s, err := makeHelloMessage(target)
+func Hello(target string, exclNum uint8) error {
+	s, err := makeHelloMessage(target, exclNum)
 	if err != nil {
 		return err
 	}
@@ -13,6 +16,7 @@ func Hello(target string) error {
 	return nil
 }
 
-func makeHelloMessage(target string) (string, error) {
-	return fmt.Sprintf("Hello %s!", target), nil
+func makeHelloMessage(target string, exclNum uint8) (string, error) {
+	exclMsg := strings.Repeat("!", int(exclNum))
+	return fmt.Sprintf("Hello %s%s", target, exclMsg), nil
 }
