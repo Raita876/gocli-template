@@ -1,6 +1,7 @@
 package hello
 
 import (
+	"errors"
 	"fmt"
 	"log/slog"
 	"strings"
@@ -20,6 +21,10 @@ func Hello(target string, exclNum uint8) error {
 func makeHelloMessage(target string, exclNum uint8) (string, error) {
 	slog.Debug(fmt.Sprintf("target=%s", target))
 	slog.Debug(fmt.Sprintf("exclNum=%d", exclNum))
+
+	if target == "" {
+		return "", errors.New("target is blank.")
+	}
 
 	exclMsg := strings.Repeat("!", int(exclNum))
 	return fmt.Sprintf("Hello %s%s", target, exclMsg), nil
