@@ -11,3 +11,7 @@ This repository is a template for Go CLI development. The directory structure is
 
 - [golangci-lint](https://golangci-lint.run)
 - [govulncheck](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
+
+# TODO
+
+- インテグレーションテスト追加
